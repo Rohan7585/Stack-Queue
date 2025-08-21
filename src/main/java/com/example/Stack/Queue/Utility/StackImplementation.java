@@ -33,22 +33,23 @@ public class StackImplementation {
         if(head == null  &&  front==-1 && rear==-1)     return nullStr;
         StackNode temp = head;
         StringBuilder str =  new StringBuilder();
+        str.append("TOP <-  ");
         while(temp.next!=null){
             str.append(String.valueOf(temp.data));
             str.append(",  ");
             temp =  temp.next;
         }
-        str.append(String.valueOf(temp.data));
+        str.append(String.valueOf(temp.data) + " <- Bottom");
         return str.toString();
     }
 
     public String top(){
         if(head == null  &&  front==-1 && rear==-1)     return nullStr;
-        return String.valueOf(head.data);
+        return "Top: " + head.data;
     }
 
     public String len(){
-        return String.valueOf(len);
+        return "Length: "+len;
     }
 }
 

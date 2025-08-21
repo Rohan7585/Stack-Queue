@@ -56,6 +56,6 @@ public class QueueImplementation {
         return str.toString();
     }
     public String len(){
-        return String.valueOf(len);
+        return "Length: " + len;
     }
 }

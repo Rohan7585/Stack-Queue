@@ -9,13 +9,13 @@
 <div>
 	<h2>Stack</h2>
 	<label>Display : </label>
-	<span id="stackDisplay"></span><br>
+	<span id="stackDisplay">Enter a value to create a Stack</span><br>
 	<label>Input : </label>
-	<input type="text"><br>
-	<button>PUSH</button>
-	<button>POP</button>
-	<button>TOP</button>
-	<button>LENGTH</button><br>
+	<input type="text" id="stackData" placeholder='Enter a value'><br>
+	<button onclick = "pushStack()">PUSH</button>
+	<button onclick = "popStack()">POP</button>
+	<button onclick = "stackTop()">TOP</button>
+	<button onclick = "stackLength()">LENGTH</button><br>
 	<label>Message Box : </label>
 	<span id="stackMsg"></span><br>
 </div>
@@ -23,16 +23,16 @@
 <div>
 	<h2>Queue</h2>
 	<label>Display : </label>
-	<span id="queueDisplay"></span><br>
+	<span id="queueDisplay">Enter a value to create a Queue</span><br>
 	<label>Input : </label>
-	<input type="text"><br>
-	<button>ENQUEUE</button>
-	<button>DEQUEUE</button>
-	<button>LENGTH</button><br>
+	<input type="text" id="queueData" placeholder='Enter a value'><br>
+	<button onclick = "enqueueQueue()">ENQUEUE</button>
+	<button onclick = "dequeueQueue()">DEQUEUE</button>
+	<button onclick = "queueLength()">LENGTH</button><br>
 	<label>Message Box : </label>
 	<span id="queueMsg"></span><br>
 </div>
 
-<script type="text/javascript" src"JSscript.js"></script>
+<script type="text/javascript" src="JSscript.js"></script>
 </body>
 </html>

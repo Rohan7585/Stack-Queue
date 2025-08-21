@@ -3,41 +3,120 @@
  */
 
 //Functions for Stack
-function pushStack(){
-	
+async function pushStack(){
+	const data = document.getElementById("stackData").value;
+	try{
+		const response = await fetch('/stack',{
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body:  JSON.stringify({ data : data })
+		});
+		const result = await response.text();
+		document.getElementById("stackMsg").innerText = result;
+		await stackDisplay();
+		document.getElementById('stackData').value='';
+	}catch(error){
+		console.error("Error: ", error);	
+	}
+/*	fetch('/stack',{
+		method: 'POST',
+		headers: {
+			"Content-Type": "application/json"
+		},
+		body:  JSON.stringify({ data : data })
+	}) 
+	.then(response => response.text())
+	.then(result => {
+		document.getElementById("stackMsg").innerText = result;
+	})
+	.catch(error => console.error("Error:", error));*/
 }
 
-function popStack(){
-	
+async function popStack(){
+	try{
+		const response  = await fetch('/stack/pop');
+		const popMsg = await response.text();
+		document.getElementById('stackMsg').innerText = popMsg;
+		await stackDisplay();
+		document.getElementById('stackData').value='';
+	}catch(error){
+		console.log("Error: ",error);
+	}
 }
 
-function stackTop(){
-	
+async function stackTop(){
+	try{
+		const response = await fetch('/stack/top');
+		const popMsg = await response.text();
+		document.getElementById('stackMsg').innerText = popMsg;
+		document.getElementById('stackData').value = '';
+	}catch(error){
+		console.log("Error: ",error);
+	}	
 }
 
-function stackDisplay(){
+async function stackDisplay(){
+	try{
+		const response = await fetch('/stack');
+		const stackResponse = await response.text();
+		document.getElementById('stackDisplay').innerText = stackResponse;
+		document.getElementById('stackData').value = '';
+	}catch(error){
+		console.error("Error: ",error);
+	}
 	
+/*	fetch('/stack')
+	.then(response => response.text())
+	.then(data => {
+		console.log(data);
+		document.getElementById("stackDisplay").innerText = data;
+	})
+	.catch(error => console.error("Error:", error));*/
 }
 
-function stackLength(){
-	
+async function stackLength(){
+	try{
+			const response = await fetch('/stack/len');
+			const popMsg = await response.text();
+			document.getElementById('stackMsg').innerText = popMsg;
+			document.getElementById('stackData').value = '';
+		}catch(error){
+			console.log("Error: ",error);
+		}	
 }
 
 
 //Functions for queue
-function enqueueQueue(){
+async function enqueueQueue(){
+	const inputData = document.getElementById('queueData').value;
+	try{
+		const response = await fetch('/queue',{
+			method: "POST",
+			headers:{
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({ data : inputData})
+		});
+		const result = await response.text();
+		document.getElementById("queueMsg").innerText = result;
+		await queueDisplay();
+		document.getElementById('queueData').value='';
+	}catch(error){
+		console.log("Error:  " , error);
+	}
+}
+
+async function dequeueQueue(){
 	
 }
 
-function dequeueQueue(){
+async function queueDisplay(){
 	
 }
 
-function queueDisplay(){
-	
-}
-
-function queueLength(){
+async function queueLength(){
 	
 }
 

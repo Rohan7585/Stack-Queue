@@ -26,6 +26,7 @@ public class QueueController {
 	 
 	 @PostMapping()
 	 public String enqueue(@RequestBody StructureModel structureModel) {
+		 if(structureModel.getData() == null || structureModel.getData().equals(""))	return  "Please, Enter an input";
 		 return queue.enqueue(Integer.parseInt(structureModel.getData()));
 	 }
 	

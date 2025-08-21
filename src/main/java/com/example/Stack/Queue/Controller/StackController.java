@@ -25,6 +25,7 @@ public class StackController {
 	
 	@PostMapping()
 	 public String push(@RequestBody  StructureModel structureModel){
+		if(structureModel == null || structureModel.getData() == "")	return "Please, Enter an input";
 		 return stack.push(Integer.parseInt(structureModel.getData()));
 	 }
 	 
