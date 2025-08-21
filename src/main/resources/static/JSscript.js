@@ -109,14 +109,38 @@ async function enqueueQueue(){
 }
 
 async function dequeueQueue(){
-	
+	try{
+		const response = await fetch('/queue/dequeue');
+		const DQmsg = await response.text();
+		document.getElementById('queueMsg').innerText = DQmsg;
+		document.getElementById('queueData').value = '';
+		await queueDisplay();
+	}catch(error){
+		console.log("Error: ",error);
+	}
 }
 
 async function queueDisplay(){
+	try{
+		const response = await fetch('/queue');
+		const DQbody = await response.text();
+		document.getElementById('queueDisplay').innerText = DQbody;
+		document.getElementById('queueData').value = '';
+	}catch(error){
+		console.log("Error: ",error);
+	}
 	
 }
 
 async function queueLength(){
+	try{
+		const response = await fetch('/queue/len');
+		const len = await response.text();
+		document.getElementById('queueMsg').innerText = len;
+		document.getElementById('queueData').value = '';
+	}catch(error){
+		console.log("Error: ",error);
+	}
 	
 }
 
